@@ -48,6 +48,7 @@ public class Third extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View view=inflater.inflate(R.layout.fragment_third, container, false);
         // Inflate the layout for this fragment
         button=view.findViewById(R.id.next);
@@ -90,6 +91,10 @@ public class Third extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (op1.isChecked())
+                {
+                    First.Score++;
+                }
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
                 Fragment frag=new Second();
                 ft.replace(R.id.frames, frag);

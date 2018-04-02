@@ -23,6 +23,7 @@ import com.google.firebase.database.ValueEventListener;
  * A simple {@link Fragment} subclass.
  */
 public class First extends Fragment {
+    public static int Score=0;
     Button button;
     String sques;
     Questions ques;
@@ -37,6 +38,7 @@ public class First extends Fragment {
     String sop2;
     String sop3;
     String sop4;
+    String sans;
 
     public First() {
         // Required empty public constructor
@@ -69,6 +71,7 @@ public class First extends Fragment {
                     sop2=ques.getOp2();
                     sop3=ques.getOp3();
                     sop4=ques.getOp4();
+                    sans=ques.getAns();
                     text.setText(sques);
 
                     op1.setText(sop1);
@@ -91,6 +94,10 @@ public class First extends Fragment {
     button.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            if(op1.isChecked())
+            {
+                First.Score++;
+            }
             FragmentTransaction ft = getFragmentManager().beginTransaction();
             Fragment frag=new Third();
             ft.replace(R.id.frames, frag);

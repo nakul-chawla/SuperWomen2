@@ -33,6 +33,7 @@ public class Second extends Fragment {
     TextView text;
     String sop1;
     String sop2;
+    String sans="abc";
 
     public Second() {
         // Required empty public constructor
@@ -60,7 +61,10 @@ public class Second extends Fragment {
 
                 s = dataSnapshot.child("Question").child(3+"").getValue(Fill.class);
                 sques = s.getQues();
+                sans=s.getAns();
+
                 text.setText(sques);
+
 
             }
 
@@ -78,8 +82,16 @@ public class Second extends Fragment {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(edit.getText().toString()=="abc")
+                {
+                    First.Score++;
+                }
 
-            }
+                    FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    Fragment frag = new Result();
+                    ft.replace(R.id.frames, frag);
+                    ft.commit();
+                            }
         });
         return view;
     }

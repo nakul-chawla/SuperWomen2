@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -95,11 +96,14 @@ public class Third extends Fragment {
                 {
                     First.Score++;
                 }
-                FragmentTransaction ft = getFragmentManager().beginTransaction();
-                Fragment frag=new Second();
-                ft.replace(R.id.frames, frag);
-                ft.commit();
-
+                if(op1.isChecked()||op2.isChecked()) {
+                    FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    Fragment frag = new Second();
+                    ft.replace(R.id.frames, frag);
+                    ft.commit();
+                }
+                else
+                    Toast.makeText(getContext(), "Choose one option", Toast.LENGTH_SHORT).show();
             }
         });
         return view;

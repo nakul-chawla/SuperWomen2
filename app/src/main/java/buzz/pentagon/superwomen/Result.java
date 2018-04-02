@@ -28,7 +28,7 @@ TextView text;
         text=view.findViewById(R.id.score);
         String s;
         s=String.valueOf(First.Score);
-        text.setText("Your score is"+s);
+        text.setText("Your score is"+s);//yes
         return view;
     }
 

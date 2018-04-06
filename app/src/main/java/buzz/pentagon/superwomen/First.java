@@ -95,11 +95,39 @@ public class First extends Fragment {
     button.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            if(op1.isChecked())
+            if(op1.isChecked()&&op1.getText().toString().compareTo(sans)==0)
             {
                 First.Score++;
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                Fragment frag = new Third();
+                ft.replace(R.id.frames, frag);
+                ft.commit();
             }
-            if(op1.isChecked()||op2.isChecked()||op3.isChecked()||op4.isChecked()) {
+            else if(op2.isChecked()&&op2.getText().toString().compareTo(sans)==0)
+            {
+                First.Score++;
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                Fragment frag = new Third();
+                ft.replace(R.id.frames, frag);
+                ft.commit();
+            }
+            else if(op3.isChecked()&&op3.getText().toString().compareTo(sans)==0)
+            {
+                First.Score++;
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                Fragment frag = new Third();
+                ft.replace(R.id.frames, frag);
+                ft.commit();
+            }
+            else if(op4.isChecked()&&op4.getText().toString().compareTo(sans)==0)
+            {
+                First.Score++;
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                Fragment frag = new Third();
+                ft.replace(R.id.frames, frag);
+                ft.commit();
+            }
+            else if(op1.isChecked()||op2.isChecked()||op3.isChecked()||op4.isChecked()) {
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
                 Fragment frag = new Third();
                 ft.replace(R.id.frames, frag);

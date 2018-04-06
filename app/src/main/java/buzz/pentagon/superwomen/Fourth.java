@@ -21,9 +21,10 @@ import com.google.firebase.database.ValueEventListener;
  */
 public class Fourth extends Fragment {
     Button button;
-    String sques[];
-    Questions ques[];
+    Questions ques;
+
     DatabaseReference mDatabase;
+    public static int no;
 
     public Fourth() {
         // Required empty public constructor
@@ -35,15 +36,16 @@ public class Fourth extends Fragment {
                              Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_fourth, container, false);
         button=view.findViewById(R.id.start);
-        sques=new String[4];
-        ques=new Questions[4];
+     //   sques=new String[4];
+     //   ques=new Questions[4];
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
 
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-//                for (int i = 1; i <= 3; i++) {
+            ques=dataSnapshot.child("Question").child(""+1).getValue(Questions.class);
+
 //                    ques[i] = dataSnapshot.child("Question").child(i+"").getValue(Questions.class);
 //                    sques[i] = ques[i].getQues();
 //                }

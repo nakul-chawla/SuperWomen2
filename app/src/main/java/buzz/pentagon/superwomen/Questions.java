@@ -24,6 +24,15 @@ public class Questions {
     String ques;
     String ans;
 
+    public int getQno() {
+        return qno;
+    }
+
+    public void setQno(int qno) {
+        this.qno = qno;
+    }
+
+    int qno;
     public String getOp4() {
         return op4;
     }

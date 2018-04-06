@@ -31,9 +31,8 @@ public class Second extends Fragment {
     Fill s;
     DatabaseReference mDatabase;
     TextView text;
-    String sop1;
-    String sop2;
-    String sans="abc";
+
+    String sans;
 
     public Second() {
         // Required empty public constructor
@@ -47,7 +46,7 @@ public class Second extends Fragment {
         // Inflate the layout for this
         View view=inflater.inflate(R.layout.fragment_second, container, false);
         submit=view.findViewById(R.id.next);
-        submit.setText("Submit");
+        submit.setText("next");
         edit=view.findViewById(R.id.edit);
 
         text=view.findViewById(R.id.textView);
@@ -82,13 +81,14 @@ public class Second extends Fragment {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(edit.getText().toString()=="abc")
+                if(edit.getText().toString().compareTo(sans)==0)
                 {
                     First.Score++;
                 }
 
+
                     FragmentTransaction ft = getFragmentManager().beginTransaction();
-                    Fragment frag = new Result();
+                    Fragment frag = new Fifth();
                     ft.replace(R.id.frames, frag);
                     ft.commit();
                             }

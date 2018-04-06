@@ -38,6 +38,7 @@ public class Third extends Fragment {
     String sop2;
     String sop3;
     String sop4;
+    String sans;
 
 
 
@@ -72,6 +73,7 @@ public class Third extends Fragment {
                 sop1=t.getOp1();
                 sop2=t.getOp2();
                 text.setText(sques);
+                sans=t.getAns();
 
                 op1.setText(sop1);
                 op2.setText(sop2);
@@ -92,11 +94,23 @@ public class Third extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (op1.isChecked())
+                if (op1.isChecked()&&op1.getText().toString().compareTo(sans)==0)
                 {
                     First.Score++;
+                    FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    Fragment frag = new Second();
+                    ft.replace(R.id.frames, frag);
+                    ft.commit();
                 }
-                if(op1.isChecked()||op2.isChecked()) {
+                if (op2.isChecked()&&op2.getText().toString().compareTo(sans)==0)
+                {
+                    First.Score++;
+                    FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    Fragment frag = new Second();
+                    ft.replace(R.id.frames, frag);
+                    ft.commit();
+                }
+                else if(op1.isChecked()||op2.isChecked()) {
                     FragmentTransaction ft = getFragmentManager().beginTransaction();
                     Fragment frag = new Second();
                     ft.replace(R.id.frames, frag);

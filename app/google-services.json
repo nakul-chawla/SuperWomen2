@@ -59,6 +59,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "332756484824-n3fbketfitgke9orneod2ltgssdtls7n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "buzz.pentagon.superwomen",
+            "certificate_hash": "abebbfba1e8539bcc0adb44332332feab2a351ff"
+          }
+        },
+        {
           "client_id": "332756484824-sb2talvi9rddhsrr31eavua595v7ucut.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

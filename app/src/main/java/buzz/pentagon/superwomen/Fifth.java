@@ -55,7 +55,7 @@ public class Fifth extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                s = dataSnapshot.child("Question").child(412    +"").getValue(Fill.class);
+                s = dataSnapshot.child("Question").child(4+"").getValue(Fill.class);
                 sques = s.getQues();
                 sans=s.getAns();
 

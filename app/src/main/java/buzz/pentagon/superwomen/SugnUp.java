@@ -75,7 +75,7 @@ public class SugnUp extends AppCompatActivity {private FirebaseAuth auth;
                     Toast.makeText(SugnUp.this, "Enter email", Toast.LENGTH_SHORT).show();
                 }
 
-
+//yes
                 if (mail.getText().toString().equals(null)) {
                     Toast.makeText(SugnUp.this, "Enter password!", Toast.LENGTH_LONG).show();
                 }

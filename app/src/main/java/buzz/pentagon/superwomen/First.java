@@ -2,6 +2,7 @@ package buzz.pentagon.superwomen;
 
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
@@ -18,6 +19,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.concurrent.TimeUnit;
+
+import static android.media.MediaExtractor.MetricsConstants.FORMAT;
 
 
 /**
@@ -40,6 +45,9 @@ public class First extends Fragment {
     String sop3;
     String sop4;
     String sans;
+    TextView textView;
+    private static final String FORMAT = "%02d:%02d:%02d";
+    int x=0;
 
     public First() {
         // Required empty public constructor
@@ -92,9 +100,36 @@ public class First extends Fragment {
 
 
         });
-    button.setOnClickListener(new View.OnClickListener() {
-        @Override
+//        TextView textView;
+//        private static final String FORMAT = "%02d:%02d:%02d";
+
+        textView=view.findViewById(R.id.timer);
+        final CountDownTimer countDownTimer = new CountDownTimer(15000,1000) {
+            @Override
+            public void onTick(long l) {
+                textView.setText(" " + "" + String.format(FORMAT,
+                        TimeUnit.MILLISECONDS.toHours(l),
+                        TimeUnit.MILLISECONDS.toMinutes(l) - TimeUnit.HOURS.toMinutes(
+                                TimeUnit.MILLISECONDS.toHours(l)),
+                        TimeUnit.MILLISECONDS.toSeconds(l) - TimeUnit.MINUTES.toSeconds(
+                                TimeUnit.MILLISECONDS.toMinutes(l))));
+
+            }
+            @Override
+            public void onFinish(){
+                if(x==0){
+                FragmentTransaction ft1 =getFragmentManager().beginTransaction();
+                Fragment frag1 = new Third();
+                ft1.replace(R.id.frames, frag1);
+                ft1.commit();
+                }
+            }
+        }.start();
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
         public void onClick(View v) {
+                x=x+1;
             if(op1.isChecked()&&op1.getText().toString().compareTo(sans)==0)
             {
                 First.Score++;

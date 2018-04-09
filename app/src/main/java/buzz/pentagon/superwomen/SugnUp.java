@@ -54,7 +54,7 @@ public class SugnUp extends AppCompatActivity {private FirebaseAuth auth;
         mref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for(int i=1;i<3;i++){
+                for(int i=1;i<4;i++){
             s[i]=dataSnapshot.child(""+i).getValue(Sign.class);
             id[i]=s[i].getEmail();
             pas[i]=s[i].getPassword();
@@ -70,21 +70,28 @@ public class SugnUp extends AppCompatActivity {private FirebaseAuth auth;
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mail.getText().toString().equals(null)) {
+                if (mail.getText().toString().equals("")) {
                     //Toast.makeText(SugnUp.this, "Enter email address!", Toast.LENGTH_LONG).show();
                     Toast.makeText(SugnUp.this, "Enter email", Toast.LENGTH_SHORT).show();
                 }
 
 //yes
-                if (mail.getText().toString().equals(null)) {
+                if (pass.getText().toString().equals("")) {
                     Toast.makeText(SugnUp.this, "Enter password!", Toast.LENGTH_LONG).show();
                 }
-                for(int i=1;i<3;i++){
+
+                for(int i=1;i<4;i++){
                 if(mail.getText().toString().compareTo(id[i])==0 && pass.getText().toString().compareTo(pas[i])==0){
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("edtText",i);
+                    // set Fragmentclass Arguments
+                    Result fragobj = new Result();
+                    fragobj.setArguments(bundle);
                     Intent intent=new Intent(SugnUp.this,MainActivity.class);
                     startActivity(intent);
 
                 }
+
                 }
 //                String email = mail.getText().toString();
 //                final String password = pass.getText().toString();

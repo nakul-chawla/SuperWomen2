@@ -17,8 +17,7 @@
             android:layout_marginTop="217dp"
             android:onClick="onQuiz"
             android:text="Start SuperWomen 2.0"
-            tools:layout_editor_absoluteX="167dp"
-            tools:layout_editor_absoluteY="115dp" />
+ />
 
     </RelativeLayout>
 

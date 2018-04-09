@@ -5,6 +5,15 @@ package buzz.pentagon.superwomen;
  */
 
 public class Sign {
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    int score;
     public String getEmail() {
         return email;
     }

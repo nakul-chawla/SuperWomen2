@@ -28,7 +28,7 @@
         android:height="30dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Enter your email id here" />
+        android:hint="Enter email" />
 
     <EditText
         android:id="@+id/editText3"

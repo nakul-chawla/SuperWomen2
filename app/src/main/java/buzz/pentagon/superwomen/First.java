@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -46,6 +47,9 @@ public class First extends Fragment {
     String sop4;
     String sans;
     TextView textView;
+    ProgressBar prg;
+
+
     private static final String FORMAT = "%02d:%02d:%02d";
     int x=0;
     static CountDownTimer cfirst;
@@ -67,6 +71,8 @@ public class First extends Fragment {
         op3=view.findViewById(R.id.third);
         op4=view.findViewById(R.id.fourth);
         text=view.findViewById(R.id.textView);
+        prg=view.findViewById(R.id.progressBar3);
+        textView=view.findViewById(R.id.timer);
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
@@ -82,12 +88,38 @@ public class First extends Fragment {
                     sop3=ques.getOp3();
                     sop4=ques.getOp4();
                     sans=ques.getAns();
+                    prg.setVisibility(View.INVISIBLE);
+                    radioGroup.setVisibility(View.VISIBLE);
+                    button.setVisibility(View.VISIBLE);
+                    textView.setVisibility(View.VISIBLE);
+                    text.setVisibility(View.VISIBLE);
                     text.setText(sques);
+
 
                     op1.setText(sop1);
                     op2.setText(sop2);
                     op3.setText(sop3);
                     op4.setText(sop4);
+                cfirst = new CountDownTimer(15000,1000) {
+                    @Override
+                    public void onTick(long l) {
+                        textView.setText(" " + "" + String.format(FORMAT,
+                                TimeUnit.MILLISECONDS.toHours(l),
+                                TimeUnit.MILLISECONDS.toMinutes(l) - TimeUnit.HOURS.toMinutes(
+                                        TimeUnit.MILLISECONDS.toHours(l)),
+                                TimeUnit.MILLISECONDS.toSeconds(l) - TimeUnit.MINUTES.toSeconds(
+                                        TimeUnit.MILLISECONDS.toMinutes(l))));
+
+                    }
+                    @Override
+                    public void onFinish(){
+                            FragmentTransaction ft1 =getFragmentManager().beginTransaction();
+                            Fragment frag1 = new Third();
+                            ft1.replace(R.id.frames, frag1);
+                            ft1.commit();
+                    }
+                }.start();
+
                 }
 
 
@@ -104,28 +136,27 @@ public class First extends Fragment {
 //        TextView textView;
 //        private static final String FORMAT = "%02d:%02d:%02d";
 
-        textView=view.findViewById(R.id.timer);
-         cfirst = new CountDownTimer(15000,1000) {
-            @Override
-            public void onTick(long l) {
-                textView.setText(" " + "" + String.format(FORMAT,
-                        TimeUnit.MILLISECONDS.toHours(l),
-                        TimeUnit.MILLISECONDS.toMinutes(l) - TimeUnit.HOURS.toMinutes(
-                                TimeUnit.MILLISECONDS.toHours(l)),
-                        TimeUnit.MILLISECONDS.toSeconds(l) - TimeUnit.MINUTES.toSeconds(
-                                TimeUnit.MILLISECONDS.toMinutes(l))));
-
-            }
-            @Override
-            public void onFinish(){
-                if(x==0){
-                FragmentTransaction ft1 =getFragmentManager().beginTransaction();
-                Fragment frag1 = new Third();
-                ft1.replace(R.id.frames, frag1);
-                ft1.commit();
-                }
-            }
-        }.start();
+//         cfirst = new CountDownTimer(15000,1000) {
+//            @Override
+//            public void onTick(long l) {
+//                textView.setText(" " + "" + String.format(FORMAT,
+//                        TimeUnit.MILLISECONDS.toHours(l),
+//                        TimeUnit.MILLISECONDS.toMinutes(l) - TimeUnit.HOURS.toMinutes(
+//                                TimeUnit.MILLISECONDS.toHours(l)),
+//                        TimeUnit.MILLISECONDS.toSeconds(l) - TimeUnit.MINUTES.toSeconds(
+//                                TimeUnit.MILLISECONDS.toMinutes(l))));
+//
+//            }
+//            @Override
+//            public void onFinish(){
+//                if(x==0){
+//                FragmentTransaction ft1 =getFragmentManager().beginTransaction();
+//                Fragment frag1 = new Third();
+//                ft1.replace(R.id.frames, frag1);
+//                ft1.commit();
+//                }
+//            }
+//        }.start();
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override

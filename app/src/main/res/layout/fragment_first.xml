@@ -7,23 +7,33 @@
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:background="@drawable/activitybg"/>
+        android:orientation="vertical"/>
+        <!--android:background="@drawable/activitybg"-->
+
 
     <TextView
         android:id="@+id/timer"
-        android:layout_width="200dp"
+        android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="250dp"
         android:layout_marginRight="50dp"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold" />
-        <RelativeLayout
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:visibility="invisible"/>
+
+
+
+    <RelativeLayout
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:orientation="vertical"
             android:layout_marginTop="70dp">
-
+        <ProgressBar
+            android:id="@+id/progressBar3"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"/>
 
             <TextView
                 android:id="@+id/textView"
@@ -31,18 +41,20 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="8dp"
                 android:text="Text"
-                android:textColor="#FFFFFF"
+                android:textColor="#000000"
                 android:textSize="35dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:visibility="invisible"/>
 
 
         <RadioGroup
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/grp"
-            android:textColor="#FFFFFF"
+            android:textColor="#000000"
             android:textStyle="bold"
             android:layout_below="@+id/textView"
+            android:visibility="invisible"
             >
 
             <RadioButton
@@ -54,8 +66,10 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="20dp"
-                android:textColor="#FFFFFF"
-                android:textStyle="bold"/>
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:buttonTint="#000000"
+                />
 
             <RadioButton
                 android:id="@+id/first"
@@ -65,9 +79,10 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="20dp"
                 android:text="first"
-                android:textColor="#FFFFFF"
+                android:textColor="#000000"
                 android:textSize="25dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:buttonTint="#000000"/>
 
             <RadioButton
                 android:id="@+id/third"
@@ -78,8 +93,9 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="20dp"
-                android:textColor="#FFFFFF"
-                android:textStyle="bold"/>
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:buttonTint="#000000"/>
             <RadioButton
                 android:id="@+id/fourth"
                 android:layout_height="wrap_content"
@@ -89,17 +105,22 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="20dp"
-                android:textColor="#FFFFFF"
-                android:textStyle="bold"/>
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:buttonTint="#000000"/>
         </RadioGroup>
 
             <Button
                 android:id="@+id/next2"
-                android:layout_width="match_parent"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:text="Next"
                 android:layout_below="@+id/grp"
-                android:layout_marginTop="70dp"/>
+                android:layout_marginTop="70dp"
+                android:text="Next"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:layout_marginRight="50dp"
+                android:visibility="invisible"/>
 
 
     </RelativeLayout>

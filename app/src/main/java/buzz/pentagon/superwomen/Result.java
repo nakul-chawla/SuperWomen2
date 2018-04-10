@@ -41,6 +41,8 @@ public Result() {
         String s;
         s=String.valueOf(First.Score);
         a.setScore(First.Score);
+        a.setEmail(SugnUp.iemail);
+        a.setPassword(SugnUp.ipassword);
         fb.child("SignUp").child(""+b).setValue(a);
 
         text.setText("Your score is"+s);//yes

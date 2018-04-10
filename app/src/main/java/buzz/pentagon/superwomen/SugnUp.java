@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -31,13 +32,16 @@ public class SugnUp extends AppCompatActivity {private FirebaseAuth auth;
     EditText pass;
     Button submit;
     static int idi;
+    static String iemail;
+    static String ipassword;
     //   View view;
     ProgressBar progressBar;
     DatabaseReference mref;
     Sign s[];
     String id[];
     String pas[];
-
+    TextView t1;
+    TextView t2;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,6 +55,10 @@ public class SugnUp extends AppCompatActivity {private FirebaseAuth auth;
         mail=(EditText)findViewById(R.id.mail) ;
         pass = (EditText)findViewById(R.id.editText3);
         submit = (Button)findViewById(R.id.button4);
+        t1=findViewById(R.id.textView5);
+        t2=findViewById(R.id.textView2);
+        progressBar=findViewById(R.id.progressBar2);
+
         mref= FirebaseDatabase.getInstance().getReference().child("SignUp");
         mref.addValueEventListener(new ValueEventListener() {
             @Override
@@ -59,6 +67,13 @@ public class SugnUp extends AppCompatActivity {private FirebaseAuth auth;
             s[i]=dataSnapshot.child(""+i).getValue(Sign.class);
             id[i]=s[i].getEmail();
             pas[i]=s[i].getPassword();
+            progressBar.setVisibility(View.INVISIBLE);
+            t1.setVisibility(View.VISIBLE);
+            t2.setVisibility(View.VISIBLE);
+            mail.setVisibility(View.VISIBLE);
+            pass.setVisibility(View.VISIBLE);
+            submit.setVisibility(View.VISIBLE);
+
                 }
             }
 
@@ -83,52 +98,15 @@ public class SugnUp extends AppCompatActivity {private FirebaseAuth auth;
 
                 for(int i=1;i<4;i++){
                 if(mail.getText().toString().compareTo(id[i])==0 && pass.getText().toString().compareTo(pas[i])==0){
-         //           Bundle bundle = new Bundle();
-         //           bundle.putInt("edtText",i);
-                    // set Fragmentclass Arguments
-
-          //          Result fragobj = new Result();
-          //          fragobj.setArguments(bundle);
-                        idi=i;
+                    idi=i;
+                    iemail=id[i];
+                    ipassword=pas[i];
                     Intent intent=new Intent(SugnUp.this,MainActivity.class);
                     startActivity(intent);
 
                 }
 
                 }
-//                String email = mail.getText().toString();
-//                final String password = pass.getText().toString();
-
-
-//
-//           //     progressBar.setVisibility(View.VISIBLE);
-//
-//                //authenticate user
-//                auth.signInWithEmailAndPassword(email, password)
-//                        .addOnCompleteListener(SugnUp.this, new OnCompleteListener<AuthResult>() {
-//                            @Override
-//                            public void onComplete(@NonNull Task<AuthResult> task) {
-//                                progressBar.setVisibility(View.GONE);
-//                                if (!task.isSuccessful()) {
-//                                    // there was an error
-//                                    if (password.length() < 6) {
-//                                        Toast.makeText(SugnUp.this,"Enter valid password",Toast.LENGTH_LONG).show();
-//
-//                                    } else {
-//                                        Toast.makeText(SugnUp.this, "Authentecation Failed", Toast.LENGTH_LONG).show();
-//                                    }
-//                                } else {
-//                                    Intent intent=new Intent(SugnUp.this,MainActivity.class);
-//
-//                                    startActivity(intent);
-//
-//                                }
-//                            }
-//
-//
-//                        });
-//
-//
             }
         });
     }

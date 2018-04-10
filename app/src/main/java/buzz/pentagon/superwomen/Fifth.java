@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -26,6 +27,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class Fifth extends Fragment {
 
+    ProgressBar pr1;
     Button submit;
     EditText edit;
     String sques;
@@ -48,10 +50,11 @@ public class Fifth extends Fragment {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_fifth, container, false);
         submit=view.findViewById(R.id.next1);
-        submit.setText("next");
+        submit.setText("Submit");
         edit=view.findViewById(R.id.edit);
-
+        pr1=view.findViewById(R.id.progressBar5);
         text=view.findViewById(R.id.textView);
+        textView=view.findViewById(R.id.timer);
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
@@ -63,8 +66,35 @@ public class Fifth extends Fragment {
                 s = dataSnapshot.child("Question").child(4+"").getValue(Fill.class);
                 sques = s.getQues();
                 sans=s.getAns();
+                pr1.setVisibility(View.INVISIBLE);
+
+                text.setVisibility(View.VISIBLE);
+                edit.setVisibility(View.VISIBLE);
+                textView.setVisibility(View.VISIBLE);
 
                 text.setText(sques);
+
+                cfifth = new CountDownTimer(15000,1000) {
+                    @Override
+                    public void onTick(long l) {
+                        textView.setText(" " + "" + String.format(FORMAT,
+                                TimeUnit.MILLISECONDS.toHours(l),
+                                TimeUnit.MILLISECONDS.toMinutes(l) - TimeUnit.HOURS.toMinutes(
+                                        TimeUnit.MILLISECONDS.toHours(l)),
+                                TimeUnit.MILLISECONDS.toSeconds(l) - TimeUnit.MINUTES.toSeconds(
+                                        TimeUnit.MILLISECONDS.toMinutes(l))));
+
+                    }
+                    @Override
+                    public void onFinish(){
+                        FragmentTransaction ft1 = getFragmentManager().beginTransaction();
+                        Fragment frag1 = new Result();
+                        ft1.replace(R.id.frames, frag1);
+                        ft1.commit();
+
+                    }
+                }.start();
+
 
 
             }
@@ -82,27 +112,6 @@ public class Fifth extends Fragment {
         });
 
 
-        textView=view.findViewById(R.id.timer);
-        cfifth = new CountDownTimer(15000,1000) {
-            @Override
-            public void onTick(long l) {
-                textView.setText(" " + "" + String.format(FORMAT,
-                        TimeUnit.MILLISECONDS.toHours(l),
-                        TimeUnit.MILLISECONDS.toMinutes(l) - TimeUnit.HOURS.toMinutes(
-                                TimeUnit.MILLISECONDS.toHours(l)),
-                        TimeUnit.MILLISECONDS.toSeconds(l) - TimeUnit.MINUTES.toSeconds(
-                                TimeUnit.MILLISECONDS.toMinutes(l))));
-
-            }
-            @Override
-            public void onFinish(){
-                    FragmentTransaction ft1 = getFragmentManager().beginTransaction();
-                    Fragment frag1 = new Result();
-                    ft1.replace(R.id.frames, frag1);
-                    ft1.commit();
-
-            }
-        }.start();
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override

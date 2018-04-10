@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -35,15 +36,15 @@ public class Third extends Fragment {
     RadioGroup radioGroup;
     RadioButton op1;
     RadioButton op2;
-    RadioButton op3;
-    RadioButton op4;
+
+
     String sop1;
     String sop2;
-    int x=0;
     String sans;
             TextView textView;
         private static final String FORMAT = "%02d:%02d:%02d";
     CountDownTimer cthird;
+    ProgressBar pg;
 
 
     public Third() {
@@ -61,6 +62,9 @@ public class Third extends Fragment {
         radioGroup=view.findViewById(R.id.grp);
         op1=view.findViewById(R.id.first);
         op2=view.findViewById(R.id.second);
+        pg=view.findViewById(R.id.progressBar4);
+        textView=view.findViewById(R.id.timer);
+
 //        op3=view.findViewById(R.id.third);
 //        op4=view.findViewById(R.id.fourth);
         text=view.findViewById(R.id.textView);
@@ -76,11 +80,43 @@ public class Third extends Fragment {
                 sques = t.getQues();
                 sop1=t.getOp1();
                 sop2=t.getOp2();
+
+                pg.setVisibility(View.INVISIBLE);
+                button.setVisibility(View.VISIBLE);
+                radioGroup.setVisibility(View.VISIBLE);
+                textView.setVisibility(View.VISIBLE);
+                text.setVisibility(View.VISIBLE);
+
+
                 text.setText(sques);
                 sans=t.getAns();
 
                 op1.setText(sop1);
                 op2.setText(sop2);
+
+                cthird = new CountDownTimer(15000,1000) {
+                    @Override
+                    public void onTick(long l) {
+                        textView.setText(" " + "" + String.format(FORMAT,
+                                TimeUnit.MILLISECONDS.toHours(l),
+                                TimeUnit.MILLISECONDS.toMinutes(l) - TimeUnit.HOURS.toMinutes(
+                                        TimeUnit.MILLISECONDS.toHours(l)),
+                                TimeUnit.MILLISECONDS.toSeconds(l) - TimeUnit.MINUTES.toSeconds(
+                                        TimeUnit.MILLISECONDS.toMinutes(l))));
+
+                    }
+                    @Override
+                    public void onFinish(){
+                        FragmentTransaction ft1 = getFragmentManager().beginTransaction();
+                        Fragment frag1 = new Fifth();
+                        ft1.replace(R.id.frames, frag1);
+                        ft1.commit();
+
+                    }
+                }.start();
+
+
+
 
             }
 
@@ -97,28 +133,6 @@ public class Third extends Fragment {
         });
         //        TextView textView;
 //        private static final String FORMAT = "%02d:%02d:%02d";
-
-        textView=view.findViewById(R.id.timer);
-         cthird = new CountDownTimer(15000,1000) {
-            @Override
-            public void onTick(long l) {
-                textView.setText(" " + "" + String.format(FORMAT,
-                        TimeUnit.MILLISECONDS.toHours(l),
-                        TimeUnit.MILLISECONDS.toMinutes(l) - TimeUnit.HOURS.toMinutes(
-                                TimeUnit.MILLISECONDS.toHours(l)),
-                        TimeUnit.MILLISECONDS.toSeconds(l) - TimeUnit.MINUTES.toSeconds(
-                                TimeUnit.MILLISECONDS.toMinutes(l))));
-
-            }
-            @Override
-            public void onFinish(){
-                    FragmentTransaction ft1 = getFragmentManager().beginTransaction();
-                    Fragment frag1 = new Fifth();
-                    ft1.replace(R.id.frames, frag1);
-                    ft1.commit();
-
-            }
-        }.start();
 
 
         button.setOnClickListener(new View.OnClickListener() {

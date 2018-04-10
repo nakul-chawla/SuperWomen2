@@ -13,12 +13,6 @@
         android:orientation="vertical"
         android:visibility="gone" >
 
-        <ProgressBar
-            android:id="@+id/pbHeaderProgress"
-            style="@android:style/Widget.Spinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-        </ProgressBar>
     </LinearLayout>
 
     <TextView
@@ -36,7 +30,8 @@
         tools:layout_editor_absoluteY="83dp"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
-        android:fontFamily="serif"/>
+        android:fontFamily="serif"
+        android:visibility="invisible"/>
 
     <EditText
         android:id="@+id/mail"
@@ -53,7 +48,8 @@
         android:hint="Enter email"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
-        android:fontFamily="serif"/>
+        android:fontFamily="serif"
+        android:visibility="invisible"/>
 
     <EditText
         android:id="@+id/editText3"
@@ -71,7 +67,8 @@
         android:hint="Enter password"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
-        android:fontFamily="serif"/>
+        android:fontFamily="serif"
+        android:visibility="invisible"/>
 
     <Button
         android:id="@+id/button4"
@@ -85,7 +82,8 @@
         android:fontFamily="serif"
         android:text="Submit"
         android:textColor="#FFFFFF"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:visibility="invisible"/>
 
     <TextView
         android:id="@+id/textView2"
@@ -101,7 +99,8 @@
         android:textSize="25dp"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
-        android:fontFamily="serif"/>
+        android:fontFamily="serif"
+        android:visibility="invisible"/>
 
     <TextView
         android:id="@+id/textView5"
@@ -114,6 +113,16 @@
         android:textSize="25dp"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
-        android:fontFamily="serif"/>
+        android:fontFamily="serif"
+        android:visibility="invisible"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/mail"
+        android:layout_centerHorizontal="true"
+        />
 
 </RelativeLayout>

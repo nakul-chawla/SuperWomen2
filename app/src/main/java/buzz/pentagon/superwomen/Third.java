@@ -43,7 +43,7 @@ public class Third extends Fragment {
     String sans;
             TextView textView;
         private static final String FORMAT = "%02d:%02d:%02d";
-
+    CountDownTimer cthird;
 
 
     public Third() {
@@ -99,7 +99,7 @@ public class Third extends Fragment {
 //        private static final String FORMAT = "%02d:%02d:%02d";
 
         textView=view.findViewById(R.id.timer);
-        final CountDownTimer countDownTimer = new CountDownTimer(15000,1000) {
+         cthird = new CountDownTimer(15000,1000) {
             @Override
             public void onTick(long l) {
                 textView.setText(" " + "" + String.format(FORMAT,
@@ -112,12 +112,11 @@ public class Third extends Fragment {
             }
             @Override
             public void onFinish(){
-                if(x==0) {
                     FragmentTransaction ft1 = getFragmentManager().beginTransaction();
-                    Fragment frag1 = new Second();
+                    Fragment frag1 = new Fifth();
                     ft1.replace(R.id.frames, frag1);
                     ft1.commit();
-                }
+
             }
         }.start();
 
@@ -125,26 +124,29 @@ public class Third extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                x=x+1;
+
                 if (op1.isChecked()&&op1.getText().toString().compareTo(sans)==0)
                 {
                     First.Score++;
+                    cthird.cancel();
                     FragmentTransaction ft = getFragmentManager().beginTransaction();
-                    Fragment frag = new Second();
+                    Fragment frag = new Fifth();
                     ft.replace(R.id.frames, frag);
                     ft.commit();
                 }
-                if (op2.isChecked()&&op2.getText().toString().compareTo(sans)==0)
+                else if (op2.isChecked()&&op2.getText().toString().compareTo(sans)==0)
                 {
                     First.Score++;
+                    cthird.cancel();
                     FragmentTransaction ft = getFragmentManager().beginTransaction();
-                    Fragment frag = new Second();
+                    Fragment frag = new Fifth();
                     ft.replace(R.id.frames, frag);
                     ft.commit();
                 }
                 else if(op1.isChecked()||op2.isChecked()) {
+                    cthird.cancel();
                     FragmentTransaction ft = getFragmentManager().beginTransaction();
-                    Fragment frag = new Second();
+                    Fragment frag = new Fifth();
                     ft.replace(R.id.frames, frag);
                     ft.commit();
                 }

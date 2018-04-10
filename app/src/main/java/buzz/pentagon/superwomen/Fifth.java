@@ -34,7 +34,7 @@ public class Fifth extends Fragment {
     TextView text;
 
     String sans;
-    int x=0;
+    CountDownTimer cfifth;
             TextView textView;
       private static final String FORMAT = "%02d:%02d:%02d";
     public Fifth() {
@@ -47,7 +47,7 @@ public class Fifth extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_fifth, container, false);
-        submit=view.findViewById(R.id.next);
+        submit=view.findViewById(R.id.next1);
         submit.setText("next");
         edit=view.findViewById(R.id.edit);
 
@@ -83,7 +83,7 @@ public class Fifth extends Fragment {
 
 
         textView=view.findViewById(R.id.timer);
-        final CountDownTimer countDownTimer = new CountDownTimer(15000,1000) {
+        cfifth = new CountDownTimer(15000,1000) {
             @Override
             public void onTick(long l) {
                 textView.setText(" " + "" + String.format(FORMAT,
@@ -96,25 +96,24 @@ public class Fifth extends Fragment {
             }
             @Override
             public void onFinish(){
-                if(x==0){
                     FragmentTransaction ft1 = getFragmentManager().beginTransaction();
                     Fragment frag1 = new Result();
                     ft1.replace(R.id.frames, frag1);
                     ft1.commit();
-                }
+
             }
         }.start();
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                x=x+1;
+
                 if(edit.getText().toString().compareTo(sans)==0)
                 {
                     First.Score++;
                 }
-
-                    FragmentTransaction ft = getFragmentManager().beginTransaction();
+                cfifth.cancel();
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
                     Fragment frag = new Result();
                     ft.replace(R.id.frames, frag);
                     ft.commit();

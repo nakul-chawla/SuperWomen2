@@ -48,6 +48,7 @@ public class First extends Fragment {
     TextView textView;
     private static final String FORMAT = "%02d:%02d:%02d";
     int x=0;
+    static CountDownTimer cfirst;
 
     public First() {
         // Required empty public constructor
@@ -104,7 +105,7 @@ public class First extends Fragment {
 //        private static final String FORMAT = "%02d:%02d:%02d";
 
         textView=view.findViewById(R.id.timer);
-        final CountDownTimer countDownTimer = new CountDownTimer(15000,1000) {
+         cfirst = new CountDownTimer(15000,1000) {
             @Override
             public void onTick(long l) {
                 textView.setText(" " + "" + String.format(FORMAT,
@@ -129,10 +130,10 @@ public class First extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
         public void onClick(View v) {
-                x=x+1;
             if(op1.isChecked()&&op1.getText().toString().compareTo(sans)==0)
             {
                 First.Score++;
+                cfirst.cancel();
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
                 Fragment frag = new Third();
                 ft.replace(R.id.frames, frag);
@@ -141,6 +142,7 @@ public class First extends Fragment {
             else if(op2.isChecked()&&op2.getText().toString().compareTo(sans)==0)
             {
                 First.Score++;
+                cfirst.cancel();
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
                 Fragment frag = new Third();
                 ft.replace(R.id.frames, frag);
@@ -149,6 +151,7 @@ public class First extends Fragment {
             else if(op3.isChecked()&&op3.getText().toString().compareTo(sans)==0)
             {
                 First.Score++;
+                cfirst.cancel();
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
                 Fragment frag = new Third();
                 ft.replace(R.id.frames, frag);
@@ -157,12 +160,14 @@ public class First extends Fragment {
             else if(op4.isChecked()&&op4.getText().toString().compareTo(sans)==0)
             {
                 First.Score++;
+                cfirst.cancel();
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
                 Fragment frag = new Third();
                 ft.replace(R.id.frames, frag);
                 ft.commit();
             }
             else if(op1.isChecked()||op2.isChecked()||op3.isChecked()||op4.isChecked()) {
+                cfirst.cancel();
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
                 Fragment frag = new Third();
                 ft.replace(R.id.frames, frag);

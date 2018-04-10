@@ -40,7 +40,7 @@
             android:hint="Answer"
             android:id="@+id/edit"/>
         <Button
-            android:id="@+id/next"
+            android:id="@+id/next1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Next" />

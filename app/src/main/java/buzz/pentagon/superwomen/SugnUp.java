@@ -30,6 +30,7 @@ public class SugnUp extends AppCompatActivity {private FirebaseAuth auth;
     EditText mail;
     EditText pass;
     Button submit;
+    static int idi;
     //   View view;
     ProgressBar progressBar;
     DatabaseReference mref;
@@ -82,11 +83,13 @@ public class SugnUp extends AppCompatActivity {private FirebaseAuth auth;
 
                 for(int i=1;i<4;i++){
                 if(mail.getText().toString().compareTo(id[i])==0 && pass.getText().toString().compareTo(pas[i])==0){
-                    Bundle bundle = new Bundle();
-                    bundle.putInt("edtText",i);
+         //           Bundle bundle = new Bundle();
+         //           bundle.putInt("edtText",i);
                     // set Fragmentclass Arguments
-                    Result fragobj = new Result();
-                    fragobj.setArguments(bundle);
+
+          //          Result fragobj = new Result();
+          //          fragobj.setArguments(bundle);
+                        idi=i;
                     Intent intent=new Intent(SugnUp.this,MainActivity.class);
                     startActivity(intent);
 

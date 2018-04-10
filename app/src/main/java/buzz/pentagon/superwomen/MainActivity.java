@@ -23,17 +23,25 @@ import com.google.firebase.database.ValueEventListener;*/
 public class MainActivity extends AppCompatActivity {
     private static final String FORMAT = "%02d:%02d:%02d";
     TextView clock;
+    boolean isPaused=false;
+    boolean isCanceled=false;
+   static CountDownTimer count;
+
     //DatabaseReference mDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
- //       clock=findViewById(R.id.clock);
-
+//        clock=findViewById(R.id.common);
 //
-//        final CountDownTimer countDownTimer = new CountDownTimer(60000,1000) {
+//
+//         count = new CountDownTimer(60000,1000) {
 //            @Override
 //            public void onTick(long l) {
+//                if(isCanceled)
+//                {
+//                    cancel();
+//                }
 //                clock.setText(" " + "" + String.format(FORMAT,
 //                        TimeUnit.MILLISECONDS.toHours(l),
 //                        TimeUnit.MILLISECONDS.toMinutes(l) - TimeUnit.HOURS.toMinutes(
@@ -50,8 +58,8 @@ public class MainActivity extends AppCompatActivity {
 //                ft1.commit();
 //            }
 //        }.start();
-
-               FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+//
+             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                 Fragment frag=new Fourth();
              ft.replace(R.id.frames, frag);
                 ft.commit();

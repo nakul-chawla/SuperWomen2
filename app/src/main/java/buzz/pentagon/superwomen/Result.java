@@ -18,7 +18,10 @@ import com.google.firebase.database.FirebaseDatabase;
 public class Result extends Fragment {
 TextView text;
 DatabaseReference fb;
+MainActivity m;
 Sign a;
+
+
 public Result() {
         // Required empty public constructor
     }
@@ -29,14 +32,16 @@ public Result() {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view=inflater.inflate(R.layout.fragment_result, container, false);
-       a=new Sign();
-//        fb=FirebaseDatabase.getInstance().getReference();
-//        int b =getArguments().getInt("edtText");
+
+
+        a=new Sign();
+        fb=FirebaseDatabase.getInstance().getReference();
+        int b = SugnUp.idi;
         text=view.findViewById(R.id.score);
         String s;
         s=String.valueOf(First.Score);
-//        a.setScore(First.Score);
-//        fb.child("SignUp").child(""+b).setValue(a);
+        a.setScore(First.Score);
+        fb.child("SignUp").child(""+b).setValue(a);
 
         text.setText("Your score is"+s);//yes
         return view;

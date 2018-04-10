@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/superwomen1">
     <LinearLayout
         android:id="@+id/linlaHeaderProgress"
         android:layout_width="fill_parent"
@@ -19,16 +20,23 @@
             android:layout_height="wrap_content" >
         </ProgressBar>
     </LinearLayout>
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/linlaHeaderProgress"
+        android:layout_marginTop="37dp"
         android:text="LOGIN"
         android:textAlignment="center"
-        android:textSize="30dp"
+        android:textSize="40dp"
         tools:layout_editor_absoluteX="163dp"
-        tools:layout_editor_absoluteY="83dp" />
+        tools:layout_editor_absoluteY="83dp"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:fontFamily="serif"/>
 
     <EditText
         android:id="@+id/mail"
@@ -42,7 +50,10 @@
         android:height="30dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Enter email" />
+        android:hint="Enter email"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:fontFamily="serif"/>
 
     <EditText
         android:id="@+id/editText3"
@@ -57,39 +68,52 @@
         android:height="30dp"
         android:ems="10"
         android:inputType="textPassword"
-        android:text="" />
+        android:hint="Enter password"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:fontFamily="serif"/>
+
     <Button
+        android:id="@+id/button4"
         android:layout_width="200dp"
         android:layout_height="50dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:layout_below="@+id/editText3"
-        android:layout_marginEnd="78dp"
-        android:layout_marginRight="78dp"
-        android:layout_marginTop="82dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="58dp"
         android:layout_weight="1"
+        android:background="@color/contrast"
+        android:fontFamily="serif"
         android:text="Submit"
-        android:id="@+id/button4" />
+        android:textColor="#FFFFFF"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="150dp"
         android:layout_height="40dp"
 
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:layout_alignTop="@+id/mail"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_toEndOf="@+id/linlaHeaderProgress"
+        android:layout_toRightOf="@+id/linlaHeaderProgress"
         android:text="E-MAIL"
-        android:textSize="25dp" />
+        android:textSize="25dp"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:fontFamily="serif"/>
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="150dp"
         android:layout_height="40dp"
         android:layout_above="@+id/button4"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignStart="@+id/textView2"
         android:text="PASSWORD"
-        android:textSize="25dp"/>
+        android:textSize="25dp"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:fontFamily="serif"/>
 
 </RelativeLayout>

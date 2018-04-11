@@ -1,10 +1,13 @@
 package buzz.pentagon.superwomen;
 
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,14 +77,14 @@ public class First extends Fragment {
         prg=view.findViewById(R.id.progressBar3);
         textView=view.findViewById(R.id.timer);
 
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase = FirebaseDatabase.getInstance().getReference("Question");
 
 
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                    ques = dataSnapshot.child("Question").child(1+"").getValue(Questions.class);
+                    ques = dataSnapshot.child(1+"").getValue(Questions.class);
                     sques = ques.getQues();
                     sop1=ques.getOp1();
                     sop2=ques.getOp2();

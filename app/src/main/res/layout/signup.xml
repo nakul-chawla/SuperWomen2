@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-    <!--android:background="@drawable/superwomen1">-->
+    android:orientation="vertical"
+    android:background="@drawable/superwomen1">
     <LinearLayout
         android:id="@+id/linlaHeaderProgress"
         android:layout_width="fill_parent"
@@ -28,7 +28,7 @@
         android:textSize="40dp"
         tools:layout_editor_absoluteX="163dp"
         tools:layout_editor_absoluteY="83dp"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textStyle="bold"
         android:fontFamily="serif"
         android:visibility="invisible"/>
@@ -46,7 +46,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="Enter email"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textStyle="bold"
         android:fontFamily="serif"
         android:visibility="invisible"/>
@@ -65,7 +65,7 @@
         android:ems="10"
         android:inputType="textPassword"
         android:hint="Enter password"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textStyle="bold"
         android:fontFamily="serif"
         android:visibility="invisible"/>
@@ -81,7 +81,7 @@
         android:background="@color/contrast"
         android:fontFamily="serif"
         android:text="Submit"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textStyle="bold"
         android:visibility="invisible"/>
 
@@ -97,7 +97,7 @@
         android:layout_toRightOf="@+id/linlaHeaderProgress"
         android:text="E-MAIL"
         android:textSize="25dp"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textStyle="bold"
         android:fontFamily="serif"
         android:visibility="invisible"/>
@@ -111,7 +111,7 @@
         android:layout_alignStart="@+id/textView2"
         android:text="PASSWORD"
         android:textSize="25dp"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textStyle="bold"
         android:fontFamily="serif"
         android:visibility="invisible"/>

@@ -38,20 +38,17 @@ public class Fourth extends Fragment {
         button=view.findViewById(R.id.start);
      //   sques=new String[4];
      //   ques=new Questions[4];
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase = FirebaseDatabase.getInstance().getReference("Question");
 
 
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-            ques=dataSnapshot.child("Question").child(""+1).getValue(Questions.class);
+            ques=dataSnapshot.child(""+1).getValue(Questions.class);
 
 //                    ques[i] = dataSnapshot.child("Question").child(i+"").getValue(Questions.class);
 //                    sques[i] = ques[i].getQues();
 //                }
-
-
-
             }
 
             @Override

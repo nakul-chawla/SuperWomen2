@@ -69,14 +69,14 @@ public class Third extends Fragment {
 //        op4=view.findViewById(R.id.fourth);
         text=view.findViewById(R.id.textView);
 
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase = FirebaseDatabase.getInstance().getReference("Question");
 
 
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                t = dataSnapshot.child("Question").child(2+"").getValue(True.class);
+                t = dataSnapshot.child(2+"").getValue(True.class);
                 sques = t.getQues();
                 sop1=t.getOp1();
                 sop2=t.getOp2();
@@ -114,15 +114,7 @@ public class Third extends Fragment {
 
                     }
                 }.start();
-
-
-
-
             }
-
-
-
-
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -131,9 +123,6 @@ public class Third extends Fragment {
 
 
         });
-        //        TextView textView;
-//        private static final String FORMAT = "%02d:%02d:%02d";
-
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override

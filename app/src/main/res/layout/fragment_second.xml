@@ -1,48 +1,69 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="buzz.pentagon.superwomen.Second">
-<LinearLayout android:layout_height="match_parent"
+    android:background="@drawable/activ"
+    tools:context="buzz.pentagon.superwomen.First">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+    <LinearLayout android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:orientation="vertical">
-    <TextView android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
+    <TextView
         android:id="@+id/timer"
-        android:layout_marginLeft="250dp"/>
-    <LinearLayout
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:textSize="40dp"
+        android:visibility="invisible"
+        />
+    <RelativeLayout
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:orientation="horizontal">
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="Q"
-            android:textStyle="bold"
-            android:textSize="35dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp">
-        </TextView>
+
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Text"
             android:textStyle="bold"
-            android:textSize="35dp"
-            android:layout_marginRight="8dp"/>
-    </LinearLayout>
+            android:textSize="20dp"
+            android:layout_marginRight="8dp"
+            android:textColor="#ffffff"
+            android:visibility="invisible"
+            />
+    </RelativeLayout>
 
    <EditText android:layout_height="wrap_content"
        android:layout_width="match_parent"
        android:hint="Answer"
-       android:id="@+id/edit"/>
+       android:id="@+id/edit"
+       android:textStyle="bold"
+       android:textSize="20dp"
+       android:layout_marginRight="8dp"
+       android:textColor="#ffffff"
+       android:visibility="invisible"/>
+
     <Button
         android:id="@+id/next"
-        android:layout_width="match_parent"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="Next" />
+        android:layout_marginRight="50dp"
+        android:background="@color/colorPrimary"
+        android:text="Next"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:visibility="invisible"/>
 
 
 </LinearLayout>
 </FrameLayout>
+</ScrollView>

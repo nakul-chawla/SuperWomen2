@@ -1,55 +1,63 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="buzz.pentagon.superwomen.Third">
-<ScrollView android:layout_height="match_parent"
-    android:layout_width="match_parent">
+    android:background="@drawable/activ"
+    tools:context="buzz.pentagon.superwomen.First">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:orientation="vertical">
-        <TextView android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
+        <TextView
             android:id="@+id/timer"
-            android:layout_marginLeft="250dp"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:textSize="40dp"
             android:visibility="invisible"/>
-        <LinearLayout
+    </LinearLayout>
+        <RelativeLayout
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:orientation="horizontal">
-            <TextView
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="Q"
-                android:textStyle="bold"
-                android:textSize="35dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:visibility="invisible">
-            </TextView>
+
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Text"
+                android:layout_marginTop="70dp"
                 android:textStyle="bold"
-                android:textSize="35dp"
+                android:textSize="20dp"
                 android:layout_marginRight="8dp"
+                android:textColor="#ffffff"
                 android:visibility="invisible"/>
-        </LinearLayout>
+
 
         <RadioGroup
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/grp"
-            android:visibility="invisible">
+            android:visibility="invisible"
+            android:orientation="vertical"
+            android:layout_below="@+id/textView"
+            android:layout_marginTop="30dp">
             <RadioButton
                 android:id="@+id/first"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="first"
-                android:textSize="25dp"
+                android:textSize="20dp"
+                android:textColor="#ffffff"
+                android:buttonTint="#ffffff"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="20dp"/>
@@ -58,10 +66,12 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="Second"
-                android:textSize="25dp"
+                android:textSize="20dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
-                android:layout_marginTop="20dp"            />
+                android:layout_marginTop="20dp"
+                android:textColor="#ffffff"
+                android:buttonTint="#ffffff"/>
         </RadioGroup>
 
         <Button
@@ -69,6 +79,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Next"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="70dp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_below="@+id/grp"
+            android:background="@color/colorPrimary"
             android:visibility="invisible"/>
 
         <ProgressBar
@@ -78,7 +94,8 @@
             android:layout_height="wrap_content" />
 
 
-    </LinearLayout>
+    </RelativeLayout>
 
-</ScrollView>>
+
 </FrameLayout>
+</ScrollView>

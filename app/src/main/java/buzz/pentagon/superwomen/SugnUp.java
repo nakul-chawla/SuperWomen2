@@ -51,10 +51,10 @@ public class SugnUp extends AppCompatActivity {private FirebaseAuth auth;
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.signup);
-        s=new Sign[5];
-        id=new String[5];
-        pas=new String[5];
-        slogin=new int[5];
+        s=new Sign[20];
+        id=new String[20];
+        pas=new String[20];
+        slogin=new int[20];
 
         login=findViewById(R.id.textView);
         //mail = (EditText) view.findViewById(R.id.mail);
@@ -69,7 +69,7 @@ public class SugnUp extends AppCompatActivity {private FirebaseAuth auth;
         mref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for(int i=1;i<4;i++){
+                for(int i=1;i<19;i++){
             s[i]=dataSnapshot.child(""+i).getValue(Sign.class);
 
             id[i]=s[i].getEmail();
@@ -106,17 +106,17 @@ public class SugnUp extends AppCompatActivity {private FirebaseAuth auth;
                     Toast.makeText(SugnUp.this, "Enter password!", Toast.LENGTH_LONG).show();
                 }
                 if(!(mail.getText().toString().equals(""))&&!(pass.getText().toString().equals(""))) {
-                    for (int i = 1; i < 4; i++) {
+                    for (int i = 1; i < 19; i++) {
                         if (mail.getText().toString().compareTo(id[i]) == 0 && pass.getText().toString().compareTo(pas[i]) != 0) {
                             Toast.makeText(SugnUp.this, "Wrong Id Password", Toast.LENGTH_SHORT).show();
                         }
                     }
-                    for (int i = 1; i < 4; i++) {
+                    for (int i = 1; i < 19; i++) {
                         if (mail.getText().toString().compareTo(id[i]) == 0 && pass.getText().toString().compareTo(pas[i]) == 0 && slogin[i] == 1) {
                             Toast.makeText(SugnUp.this, "Already Logged In", Toast.LENGTH_SHORT).show();
                         }
                     }
-                    for (int i = 1; i < 4; i++) {
+                    for (int i = 1; i < 19; i++) {
                         if (mail.getText().toString().compareTo(id[i]) == 0 && pass.getText().toString().compareTo(pas[i]) == 0 && slogin[i] == 0) {
                             idi = i;
                             iemail = id[i];

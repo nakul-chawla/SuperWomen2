@@ -56,22 +56,22 @@ public class Fifth extends Fragment {
         text=view.findViewById(R.id.textView);
         textView=view.findViewById(R.id.timer);
 
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase = FirebaseDatabase.getInstance().getReference("Question");
 
 //yes
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                s = dataSnapshot.child("Question").child(4+"").getValue(Fill.class);
+                s = dataSnapshot.child(4+"").getValue(Fill.class);
                 sques = s.getQues();
                 sans=s.getAns();
                 pr1.setVisibility(View.INVISIBLE);
 
                 text.setVisibility(View.VISIBLE);
                 edit.setVisibility(View.VISIBLE);
-                textView.setVisibility(View.VISIBLE);
-
+               textView.setVisibility(View.VISIBLE);
+                submit.setVisibility(View.VISIBLE);
                 text.setText(sques);
 
                 cfifth = new CountDownTimer(15000,1000) {
@@ -94,15 +94,7 @@ public class Fifth extends Fragment {
 
                     }
                 }.start();
-
-
-
             }
-
-
-
-
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
 

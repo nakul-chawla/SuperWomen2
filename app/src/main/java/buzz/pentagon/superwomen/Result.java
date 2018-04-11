@@ -43,9 +43,10 @@ public Result() {
         a.setScore(First.Score);
         a.setEmail(SugnUp.iemail);
         a.setPassword(SugnUp.ipassword);
+        a.setLogin(1);
         fb.child("SignUp").child(""+b).setValue(a);
 
-        text.setText("Your score is"+s);//yes
+        text.setText("Your score is"+" "+ s);//yes
         return view;
     }
 

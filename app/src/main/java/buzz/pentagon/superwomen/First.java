@@ -100,6 +100,9 @@ public class First extends Fragment {
                     op2.setText(sop2);
                     op3.setText(sop3);
                     op4.setText(sop4);
+
+
+
                 cfirst = new CountDownTimer(15000,1000) {
                     @Override
                     public void onTick(long l) {
@@ -133,31 +136,6 @@ public class First extends Fragment {
 
 
         });
-//        TextView textView;
-//        private static final String FORMAT = "%02d:%02d:%02d";
-
-//         cfirst = new CountDownTimer(15000,1000) {
-//            @Override
-//            public void onTick(long l) {
-//                textView.setText(" " + "" + String.format(FORMAT,
-//                        TimeUnit.MILLISECONDS.toHours(l),
-//                        TimeUnit.MILLISECONDS.toMinutes(l) - TimeUnit.HOURS.toMinutes(
-//                                TimeUnit.MILLISECONDS.toHours(l)),
-//                        TimeUnit.MILLISECONDS.toSeconds(l) - TimeUnit.MINUTES.toSeconds(
-//                                TimeUnit.MILLISECONDS.toMinutes(l))));
-//
-//            }
-//            @Override
-//            public void onFinish(){
-//                if(x==0){
-//                FragmentTransaction ft1 =getFragmentManager().beginTransaction();
-//                Fragment frag1 = new Third();
-//                ft1.replace(R.id.frames, frag1);
-//                ft1.commit();
-//                }
-//            }
-//        }.start();
-
         button.setOnClickListener(new View.OnClickListener() {
             @Override
         public void onClick(View v) {

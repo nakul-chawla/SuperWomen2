@@ -34,14 +34,18 @@ public class SugnUp extends AppCompatActivity {private FirebaseAuth auth;
     static int idi;
     static String iemail;
     static String ipassword;
+    static int ilogin;
     //   View view;
     ProgressBar progressBar;
     DatabaseReference mref;
     Sign s[];
     String id[];
     String pas[];
+    int slogin[];
     TextView t1;
     TextView t2;
+    TextView login;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,7 +54,9 @@ public class SugnUp extends AppCompatActivity {private FirebaseAuth auth;
         s=new Sign[5];
         id=new String[5];
         pas=new String[5];
+        slogin=new int[5];
 
+        login=findViewById(R.id.textView);
         //mail = (EditText) view.findViewById(R.id.mail);
         mail=(EditText)findViewById(R.id.mail) ;
         pass = (EditText)findViewById(R.id.editText3);
@@ -65,14 +71,18 @@ public class SugnUp extends AppCompatActivity {private FirebaseAuth auth;
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(int i=1;i<4;i++){
             s[i]=dataSnapshot.child(""+i).getValue(Sign.class);
+
             id[i]=s[i].getEmail();
             pas[i]=s[i].getPassword();
+            slogin[i]=s[i].getLogin();
+
             progressBar.setVisibility(View.INVISIBLE);
             t1.setVisibility(View.VISIBLE);
             t2.setVisibility(View.VISIBLE);
             mail.setVisibility(View.VISIBLE);
             pass.setVisibility(View.VISIBLE);
             submit.setVisibility(View.VISIBLE);
+            login.setVisibility(View.VISIBLE);
 
                 }
             }
@@ -95,17 +105,31 @@ public class SugnUp extends AppCompatActivity {private FirebaseAuth auth;
                 if (pass.getText().toString().equals("")) {
                     Toast.makeText(SugnUp.this, "Enter password!", Toast.LENGTH_LONG).show();
                 }
+                if(!(mail.getText().toString().equals(""))&&!(pass.getText().toString().equals(""))) {
+                    for (int i = 1; i < 4; i++) {
+                        if (mail.getText().toString().compareTo(id[i]) == 0 && pass.getText().toString().compareTo(pas[i]) != 0) {
+                            Toast.makeText(SugnUp.this, "Wrong Id Password", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    for (int i = 1; i < 4; i++) {
+                        if (mail.getText().toString().compareTo(id[i]) == 0 && pass.getText().toString().compareTo(pas[i]) == 0 && slogin[i] == 1) {
+                            Toast.makeText(SugnUp.this, "Already Logged In", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    for (int i = 1; i < 4; i++) {
+                        if (mail.getText().toString().compareTo(id[i]) == 0 && pass.getText().toString().compareTo(pas[i]) == 0 && slogin[i] == 0) {
+                            idi = i;
+                            iemail = id[i];
+                            ipassword = pas[i];
+                            ilogin = 1;
+                            s[i].setLogin(1);
+                            mref.child("" + i).setValue(s[i]);
+                            Intent intent = new Intent(SugnUp.this, MainActivity.class);
+                            startActivity(intent);
 
-                for(int i=1;i<4;i++){
-                if(mail.getText().toString().compareTo(id[i])==0 && pass.getText().toString().compareTo(pas[i])==0){
-                    idi=i;
-                    iemail=id[i];
-                    ipassword=pas[i];
-                    Intent intent=new Intent(SugnUp.this,MainActivity.class);
-                    startActivity(intent);
+                        }
 
-                }
-
+                    }
                 }
             }
         });

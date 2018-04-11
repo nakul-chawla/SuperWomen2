@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="buzz.pentagon.superwomen.First">
-
+<ScrollView android:layout_height="match_parent"
+    android:layout_width="match_parent">
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout android:layout_height="match_parent"
         android:layout_width="match_parent"
@@ -125,5 +126,5 @@
 
     </RelativeLayout>
 
-
+</ScrollView>>
 </FrameLayout>

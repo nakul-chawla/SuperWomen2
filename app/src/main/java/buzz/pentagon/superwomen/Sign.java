@@ -13,6 +13,15 @@ public class Sign {
         this.score = score;
     }
 
+    public int getLogin() {
+        return login;
+    }
+
+    public void setLogin(int login) {
+        this.login = login;
+    }
+
+    int login;
     int score;
     public String getEmail() {
         return email;

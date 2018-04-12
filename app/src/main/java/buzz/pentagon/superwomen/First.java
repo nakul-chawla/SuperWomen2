@@ -96,7 +96,8 @@ public class First extends Fragment {
                     button.setVisibility(View.VISIBLE);
                     textView.setVisibility(View.VISIBLE);
                     text.setVisibility(View.VISIBLE);
-                    text.setText(sques);
+
+                    text.setText("Q.)"+sques);
 
 
                     op1.setText(sop1);
@@ -119,10 +120,44 @@ public class First extends Fragment {
                     }
                     @Override
                     public void onFinish(){
-                            FragmentTransaction ft1 =getFragmentManager().beginTransaction();
-                            Fragment frag1 = new Third();
-                            ft1.replace(R.id.frames, frag1);
-                            ft1.commit();
+                        if(op1.isChecked()&&op1.getText().toString().compareTo(sans)==0)
+                        {
+                            First.Score++;
+                            FragmentTransaction ft = getFragmentManager().beginTransaction();
+                            Fragment frag = new Third();
+                            ft.replace(R.id.frames, frag);
+                            ft.commit();
+                        }
+                        else if(op2.isChecked()&&op2.getText().toString().compareTo(sans)==0)
+                        {
+                            First.Score++;
+                            FragmentTransaction ft = getFragmentManager().beginTransaction();
+                            Fragment frag = new Third();
+                            ft.replace(R.id.frames, frag);
+                            ft.commit();
+                        }
+                        else if(op3.isChecked()&&op3.getText().toString().compareTo(sans)==0)
+                        {
+                            First.Score++;
+                            FragmentTransaction ft = getFragmentManager().beginTransaction();
+                            Fragment frag = new Third();
+                            ft.replace(R.id.frames, frag);
+                            ft.commit();
+                        }
+                        else if(op4.isChecked()&&op4.getText().toString().compareTo(sans)==0)
+                        {
+                            First.Score++;
+                            FragmentTransaction ft = getFragmentManager().beginTransaction();
+                            Fragment frag = new Third();
+                            ft.replace(R.id.frames, frag);
+                            ft.commit();
+                        }
+                        else{
+                            FragmentTransaction ft = getFragmentManager().beginTransaction();
+                            Fragment frag = new Third();
+                            ft.replace(R.id.frames, frag);
+                            ft.commit();
+                        }
                     }
                 }.start();
 

@@ -1,6 +1,5 @@
 package buzz.pentagon.superwomen;
 
-
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
@@ -23,31 +22,36 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.concurrent.TimeUnit;
 
-
 /**
- * A simple {@link Fragment} subclass.
+ * Created by Nakul on 12-04-2018.
  */
-public class Third extends Fragment {
+
+public class Twentyone extends Fragment {
+    public static int Score=0;
     Button button;
     String sques;
-    True t;
+    Questions ques;
     DatabaseReference mDatabase;
     TextView text;
     RadioGroup radioGroup;
     RadioButton op1;
     RadioButton op2;
-
-
+    RadioButton op3;
+    RadioButton op4;
     String sop1;
     String sop2;
+    String sop3;
+    String sop4;
     String sans;
-            TextView textView;
-        private static final String FORMAT = "%02d:%02d:%02d";
-    CountDownTimer cthird;
-    ProgressBar pg;
+    TextView textView;
+    ProgressBar prg;
 
 
-    public Third() {
+    private static final String FORMAT = "%02d:%02d:%02d";
+    int x=0;
+    static CountDownTimer cfirst;
+
+    public Twentyone(){
         // Required empty public constructor
     }
 
@@ -55,19 +59,17 @@ public class Third extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        View view=inflater.inflate(R.layout.fragment_third, container, false);
         // Inflate the layout for this fragment
-        button=view.findViewById(R.id.next);
+        View view=inflater.inflate(R.layout.fragment_first, container, false);
+        button=view.findViewById(R.id.next2);
         radioGroup=view.findViewById(R.id.grp);
         op1=view.findViewById(R.id.first);
         op2=view.findViewById(R.id.second);
-        pg=view.findViewById(R.id.progressBar4);
-        textView=view.findViewById(R.id.timer);
-
-//        op3=view.findViewById(R.id.third);
-//        op4=view.findViewById(R.id.fourth);
+        op3=view.findViewById(R.id.third);
+        op4=view.findViewById(R.id.fourth);
         text=view.findViewById(R.id.textView);
+        prg=view.findViewById(R.id.progressBar3);
+        textView=view.findViewById(R.id.timer);
 
         mDatabase = FirebaseDatabase.getInstance().getReference("Question");
 
@@ -76,25 +78,30 @@ public class Third extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                t = dataSnapshot.child(2+"").getValue(True.class);
-                sques = t.getQues();
-                sop1=t.getOp1();
-                sop2=t.getOp2();
-
-                pg.setVisibility(View.INVISIBLE);
-                button.setVisibility(View.VISIBLE);
+                ques = dataSnapshot.child(1+"").getValue(Questions.class);
+                sques = ques.getQues();
+                sop1=ques.getOp1();
+                sop2=ques.getOp2();
+                sop3=ques.getOp3();
+                sop4=ques.getOp4();
+                sans=ques.getAns();
+                prg.setVisibility(View.INVISIBLE);
                 radioGroup.setVisibility(View.VISIBLE);
+                button.setVisibility(View.VISIBLE);
                 textView.setVisibility(View.VISIBLE);
                 text.setVisibility(View.VISIBLE);
 
-
                 text.setText("Q.)"+sques);
-                sans=t.getAns();
+
 
                 op1.setText(sop1);
                 op2.setText(sop2);
+                op3.setText(sop3);
+                op4.setText(sop4);
 
-                cthird = new CountDownTimer(15000,1000) {
+
+
+                cfirst = new CountDownTimer(15000,1000) {
                     @Override
                     public void onTick(long l) {
                         textView.setText(" " + "" + String.format(FORMAT,
@@ -107,32 +114,52 @@ public class Third extends Fragment {
                     }
                     @Override
                     public void onFinish(){
-                        if (op1.isChecked()&&op1.getText().toString().compareTo(sans)==0)
+                        if(op1.isChecked()&&op1.getText().toString().compareTo(sans)==0)
                         {
                             First.Score++;
                             FragmentTransaction ft = getFragmentManager().beginTransaction();
-                            Fragment frag = new Fifth();
+                            Fragment frag = new Result();
                             ft.replace(R.id.frames, frag);
                             ft.commit();
                         }
-                        else if (op2.isChecked()&&op2.getText().toString().compareTo(sans)==0)
+                        else if(op2.isChecked()&&op2.getText().toString().compareTo(sans)==0)
                         {
                             First.Score++;
-
                             FragmentTransaction ft = getFragmentManager().beginTransaction();
-                            Fragment frag = new Fifth();
+                            Fragment frag = new Result();
+                            ft.replace(R.id.frames, frag);
+                            ft.commit();
+                        }
+                        else if(op3.isChecked()&&op3.getText().toString().compareTo(sans)==0)
+                        {
+                            First.Score++;
+                            FragmentTransaction ft = getFragmentManager().beginTransaction();
+                            Fragment frag = new Result();
+                            ft.replace(R.id.frames, frag);
+                            ft.commit();
+                        }
+                        else if(op4.isChecked()&&op4.getText().toString().compareTo(sans)==0)
+                        {
+                            First.Score++;
+                            FragmentTransaction ft = getFragmentManager().beginTransaction();
+                            Fragment frag = new Result();
                             ft.replace(R.id.frames, frag);
                             ft.commit();
                         }
                         else{
                             FragmentTransaction ft = getFragmentManager().beginTransaction();
-                            Fragment frag = new Fifth();
+                            Fragment frag = new Result();
                             ft.replace(R.id.frames, frag);
                             ft.commit();
                         }
                     }
                 }.start();
+
             }
+
+
+
+
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -141,38 +168,54 @@ public class Third extends Fragment {
 
 
         });
-
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if (op1.isChecked()&&op1.getText().toString().compareTo(sans)==0)
+                if(op1.isChecked()&&op1.getText().toString().compareTo(sans)==0)
                 {
                     First.Score++;
-                    cthird.cancel();
+                    cfirst.cancel();
                     FragmentTransaction ft = getFragmentManager().beginTransaction();
-                    Fragment frag = new Fifth();
+                    Fragment frag = new Result();
                     ft.replace(R.id.frames, frag);
                     ft.commit();
                 }
-                else if (op2.isChecked()&&op2.getText().toString().compareTo(sans)==0)
+                else if(op2.isChecked()&&op2.getText().toString().compareTo(sans)==0)
                 {
                     First.Score++;
-                    cthird.cancel();
+                    cfirst.cancel();
                     FragmentTransaction ft = getFragmentManager().beginTransaction();
-                    Fragment frag = new Fifth();
+                    Fragment frag = new Result();
                     ft.replace(R.id.frames, frag);
                     ft.commit();
                 }
-                else if(op1.isChecked()||op2.isChecked()) {
-                    cthird.cancel();
+                else if(op3.isChecked()&&op3.getText().toString().compareTo(sans)==0)
+                {
+                    First.Score++;
+                    cfirst.cancel();
                     FragmentTransaction ft = getFragmentManager().beginTransaction();
-                    Fragment frag = new Fifth();
+                    Fragment frag = new Result();
+                    ft.replace(R.id.frames, frag);
+                    ft.commit();
+                }
+                else if(op4.isChecked()&&op4.getText().toString().compareTo(sans)==0)
+                {
+                    First.Score++;
+                    cfirst.cancel();
+                    FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    Fragment frag = new Result();
+                    ft.replace(R.id.frames, frag);
+                    ft.commit();
+                }
+                else if(op1.isChecked()||op2.isChecked()||op3.isChecked()||op4.isChecked()) {
+                    cfirst.cancel();
+                    FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    Fragment frag = new Result();
                     ft.replace(R.id.frames, frag);
                     ft.commit();
                 }
                 else
-                    Toast.makeText(getContext(), "Choose one option", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Choose one answer", Toast.LENGTH_SHORT).show();
             }
         });
         return view;

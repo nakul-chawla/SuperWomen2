@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -50,7 +51,7 @@ public class Fifth extends Fragment {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_fifth, container, false);
         submit=view.findViewById(R.id.next1);
-        submit.setText("Submit");
+        submit.setText("next");
         edit=view.findViewById(R.id.edit);
         pr1=view.findViewById(R.id.progressBar5);
         text=view.findViewById(R.id.textView);
@@ -72,7 +73,7 @@ public class Fifth extends Fragment {
                 edit.setVisibility(View.VISIBLE);
                textView.setVisibility(View.VISIBLE);
                 submit.setVisibility(View.VISIBLE);
-                text.setText(sques);
+                text.setText("Q.)"+sques);
 
                 cfifth = new CountDownTimer(15000,1000) {
                     @Override
@@ -87,11 +88,21 @@ public class Fifth extends Fragment {
                     }
                     @Override
                     public void onFinish(){
-                        FragmentTransaction ft1 = getFragmentManager().beginTransaction();
-                        Fragment frag1 = new Result();
-                        ft1.replace(R.id.frames, frag1);
-                        ft1.commit();
-
+                        if(!(edit.getText().toString().equals(""))) {
+                            if (edit.getText().toString().compareTo(sans) == 0) {
+                                First.Score++;
+                            }
+                            FragmentTransaction ft = getFragmentManager().beginTransaction();
+                            Fragment frag = new Eleven();
+                            ft.replace(R.id.frames, frag);
+                            ft.commit();
+                        }
+                        else {
+                            FragmentTransaction ft1 = getFragmentManager().beginTransaction();
+                            Fragment frag1 = new Eleven();
+                            ft1.replace(R.id.frames, frag1);
+                            ft1.commit();
+                        }
                     }
                 }.start();
             }
@@ -108,19 +119,20 @@ public class Fifth extends Fragment {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if(edit.getText().toString().compareTo(sans)==0)
-                {
-                    First.Score++;
-                }
-                cfifth.cancel();
-                FragmentTransaction ft = getFragmentManager().beginTransaction();
-                    Fragment frag = new Result();
-                    ft.replace(R.id.frames, frag);
-                    ft.commit();
+               if(!edit.getText().toString().equals("")) {
+                   if (edit.getText().toString().compareTo(sans) == 0) {
+                       First.Score++;
+                   }
+                   cfifth.cancel();
+                   FragmentTransaction ft = getFragmentManager().beginTransaction();
+                   Fragment frag = new Eleven();
+                   ft.replace(R.id.frames, frag);
+                   ft.commit();
+               }
+               else
+                   Toast.makeText(getContext(), "Please enter answer", Toast.LENGTH_SHORT).show();
             }
         });
         return view;
     }
-
 }

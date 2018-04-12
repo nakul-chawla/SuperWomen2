@@ -48,13 +48,12 @@
             android:visibility="invisible"/>
         <Button
             android:id="@+id/next1"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
             android:text="Next"
             android:gravity="center"
             android:textColor="#FFFFFF"
-            android:layout_marginRight="100dp"
             android:textStyle="bold"
             android:visibility="invisible"/>
         <ProgressBar

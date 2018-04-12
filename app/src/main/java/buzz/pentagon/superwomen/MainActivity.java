@@ -33,13 +33,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-
-             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                Fragment frag=new Fourth();
-             ft.replace(R.id.frames, frag);
-                ft.commit();
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        Fragment frag=new Fourth();
+        ft.replace(R.id.frames, frag);
+        ft.commit();
 
     }
 
